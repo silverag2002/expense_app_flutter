@@ -1,4 +1,5 @@
 import 'package:expense_app/models/expense.dart';
+import 'package:expense_app/screen_container.dart';
 import 'package:flutter/material.dart';
 
 class Expenses extends StatefulWidget {
@@ -25,7 +26,10 @@ class _ExpensesState extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: const Column(children: [Text("Test Text")]),
-    );
+        margin: const EdgeInsets.all(10),
+        child: Column(children: [
+          const Text("The chart"),
+          Expanded(child: ScreenContainer(_registeredExpenses))
+        ]));
   }
 }

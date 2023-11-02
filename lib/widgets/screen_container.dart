@@ -7,15 +7,8 @@ class ScreenContainer extends StatelessWidget {
   @override
   Widget build(context) {
     return Container(
-      margin: const EdgeInsets.all(10),
-      child: const Padding(
-          padding: EdgeInsets.all(50.0),
-          child: Column(
-            children: [
-              Center(child: Text("Hello")),
-              Center(child: Text("Ankit"))
-            ],
-          )),
-    );
+        child: ListView.builder(
+            itemCount: expenses.length,
+            itemBuilder: (ctx, index) => Text(expenses[index].title)));
   }
 }
