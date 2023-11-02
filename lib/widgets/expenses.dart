@@ -1,5 +1,5 @@
 import 'package:expense_app/models/expense.dart';
-import 'package:expense_app/screen_container.dart';
+import 'package:expense_app/widgets/screen_container.dart';
 import 'package:flutter/material.dart';
 
 class Expenses extends StatefulWidget {
