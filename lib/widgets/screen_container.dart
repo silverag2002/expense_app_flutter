@@ -1,3 +1,4 @@
+import 'package:expense_app/widgets/expense_item.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_app/models/expense.dart';
 
@@ -9,6 +10,6 @@ class ScreenContainer extends StatelessWidget {
     return Container(
         child: ListView.builder(
             itemCount: expenses.length,
-            itemBuilder: (ctx, index) => Text(expenses[index].title)));
+            itemBuilder: (ctx, index) => ExpenseItem(expenses[index].title)));
   }
 }
