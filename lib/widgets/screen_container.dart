@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:expense_app/models/expense.dart';
 
 class ScreenContainer extends StatelessWidget {
-  ScreenContainer(this.expenses, {super.key});
-  final List<Expense> expenses;
+  ScreenContainer(this.expensesData, {super.key});
+  final List<Expense> expensesData;
   @override
   Widget build(context) {
     return Container(
         child: ListView.builder(
-            itemCount: expenses.length,
-            itemBuilder: (ctx, index) => ExpenseItem(expenses[index])));
+            itemCount: expensesData.length,
+            itemBuilder: (ctx, index) => ExpenseItem(expensesData[index])));
   }
 }

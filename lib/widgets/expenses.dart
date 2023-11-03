@@ -14,21 +14,15 @@ class Expenses extends StatefulWidget {
 List<Expense> expenseData = [];
 
 class _ExpensesState extends State<Expenses> {
-  final List<Expense> _registeredExpenses = [
-    Expense(
-        title: "Lunch",
-        date: DateTime.now(),
-        amount: 20.67,
-        category: Category.food),
-    Expense(
-        title: "Movie",
-        date: DateTime.now(),
-        amount: 10.97,
-        category: Category.leisure)
-  ];
+  void addExpense(Expense expense) {
+    setState(() {
+      expenseData.add(expense);
+    });
+  }
+
   void _openBottomModel() {
     showModalBottomSheet(
-        context: context, builder: (ctx) => ExpenseInput(expenseData));
+        context: context, builder: (ctx) => ExpenseInput(addExpense));
   }
 
   @override

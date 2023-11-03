@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:expense_app/models/expense.dart';
 
 class ExpenseInput extends StatefulWidget {
-  ExpenseInput(this.expenseData, {super.key});
-  List<Expense> expenseData = [];
+  ExpenseInput(this.addExpense, {super.key});
+  final Function addExpense;
   State<ExpenseInput> createState() {
     return _ExpenseInputState();
   }
@@ -135,11 +135,8 @@ class _ExpenseInputState extends State<ExpenseInput> {
                                 title: _titleController.text,
                                 date: selectedDate!,
                                 category: _selectedCategory);
-                            print("DATA ${data}");
-                            print("WIDGET DATA ${widget.expenseData}");
-                            setState(() {
-                              widget.expenseData.add(data);
-                            });
+
+                            widget.addExpense(data);
 
                             Navigator.pop(context);
                           }
