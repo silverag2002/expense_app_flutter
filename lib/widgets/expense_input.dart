@@ -7,6 +7,7 @@ class ExpenseInput extends StatefulWidget {
   }
 }
 
+List<Expense> expenseData = [];
 DateTime? selectedDate;
 
 class _ExpenseInputState extends State<ExpenseInput> {
@@ -121,7 +122,16 @@ class _ExpenseInputState extends State<ExpenseInput> {
                                       ],
                                     ));
                             return;
-                          } else {}
+                          } else {
+                            final data = Expense(
+                                amount: double.tryParse(
+                                    _amountController.toString())!,
+                                title: _titleController.toString(),
+                                date: selectedDate!,
+                                category: _selectedCategory);
+                            expenseData.add(data);
+                            Navigator.pop(context);
+                          }
                         },
                         child: const Text("Save Expense"))),
                 Padding(
