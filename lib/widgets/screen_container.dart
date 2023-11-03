@@ -10,6 +10,6 @@ class ScreenContainer extends StatelessWidget {
     return Container(
         child: ListView.builder(
             itemCount: expenses.length,
-            itemBuilder: (ctx, index) => ExpenseItem(expenses[index].title)));
+            itemBuilder: (ctx, index) => ExpenseItem(expenses[index])));
   }
 }
