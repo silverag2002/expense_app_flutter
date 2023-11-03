@@ -11,6 +11,8 @@ class Expenses extends StatefulWidget {
   }
 }
 
+List<Expense> expenseData = [];
+
 class _ExpensesState extends State<Expenses> {
   final List<Expense> _registeredExpenses = [
     Expense(
@@ -25,7 +27,8 @@ class _ExpensesState extends State<Expenses> {
         category: Category.leisure)
   ];
   void _openBottomModel() {
-    showModalBottomSheet(context: context, builder: (ctx) => ExpenseInput());
+    showModalBottomSheet(
+        context: context, builder: (ctx) => ExpenseInput(expenseData));
   }
 
   @override
@@ -38,7 +41,7 @@ class _ExpensesState extends State<Expenses> {
             margin: const EdgeInsets.all(10),
             child: Column(children: [
               const Text("The chart"),
-              Expanded(child: ScreenContainer(_registeredExpenses))
+              Expanded(child: ScreenContainer(expenseData))
             ]))));
   }
 }

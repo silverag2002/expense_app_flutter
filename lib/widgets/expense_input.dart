@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:expense_app/models/expense.dart';
 
 class ExpenseInput extends StatefulWidget {
+  ExpenseInput(this.expenseData, {super.key});
+  List<Expense> expenseData = [];
   State<ExpenseInput> createState() {
     return _ExpenseInputState();
   }
 }
 
-List<Expense> expenseData = [];
 DateTime? selectedDate;
 
 class _ExpenseInputState extends State<ExpenseInput> {
@@ -101,7 +102,12 @@ class _ExpenseInputState extends State<ExpenseInput> {
                     child: ElevatedButton(
                         onPressed: () {
                           final _amountValidation =
-                              double.tryParse(_amountController.toString());
+                              double.tryParse(_amountController.text);
+                          print("AMOUNT 1 ${_amountValidation == null}");
+                          print("AMOUNT  2${_amountValidation! <= 0}");
+                          print(
+                              "AMOUNT 3 ${_titleController.text.trim().isEmpty}");
+                          print("AMOUNT 4 ${selectedDate == null}");
 
                           if (_amountValidation == null ||
                               _amountValidation <= 0 ||
@@ -124,12 +130,17 @@ class _ExpenseInputState extends State<ExpenseInput> {
                             return;
                           } else {
                             final data = Expense(
-                                amount: double.tryParse(
-                                    _amountController.toString())!,
-                                title: _titleController.toString(),
+                                amount:
+                                    double.tryParse(_amountController.text)!,
+                                title: _titleController.text,
                                 date: selectedDate!,
                                 category: _selectedCategory);
-                            expenseData.add(data);
+                            print("DATA ${data}");
+                            print("WIDGET DATA ${widget.expenseData}");
+                            setState(() {
+                              widget.expenseData.add(data);
+                            });
+
                             Navigator.pop(context);
                           }
                         },

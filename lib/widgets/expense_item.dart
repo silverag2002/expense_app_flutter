@@ -6,6 +6,8 @@ class ExpenseItem extends StatelessWidget {
   final Expense expense;
   @override
   Widget build(context) {
+    print("Expense ${expense.title}");
+
     return Card(
       child: Padding(
           padding: EdgeInsets.all(10),
