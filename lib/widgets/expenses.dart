@@ -23,13 +23,21 @@ class _ExpensesState extends State<Expenses> {
         amount: 10.97,
         category: Category.leisure)
   ];
+  void _openBottomModel() {
+    showModalBottomSheet(context: context, builder: (ctx) => Text("HELLO"));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.all(10),
-        child: Column(children: [
-          const Text("The chart"),
-          Expanded(child: ScreenContainer(_registeredExpenses))
-        ]));
+    return (Scaffold(
+        appBar: AppBar(title: const Text("Expense Tracker"), actions: [
+          IconButton(onPressed: _openBottomModel, icon: const Icon(Icons.add))
+        ]),
+        body: Container(
+            margin: const EdgeInsets.all(10),
+            child: Column(children: [
+              const Text("The chart"),
+              Expanded(child: ScreenContainer(_registeredExpenses))
+            ]))));
   }
 }
