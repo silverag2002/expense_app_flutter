@@ -1,4 +1,5 @@
 import 'package:expense_app/models/expense.dart';
+import 'package:expense_app/widgets/expense_input.dart';
 import 'package:expense_app/widgets/screen_container.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class _ExpensesState extends State<Expenses> {
         category: Category.leisure)
   ];
   void _openBottomModel() {
-    showModalBottomSheet(context: context, builder: (ctx) => Text("HELLO"));
+    showModalBottomSheet(context: context, builder: (ctx) => ExpenseInput());
   }
 
   @override
