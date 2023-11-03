@@ -23,6 +23,7 @@ class _ExpenseInputState extends State<ExpenseInput> {
     super.dispose();
   }
 
+  Category _selectedCategory = Category.leisure;
   Widget build(context) {
     return Padding(
         padding: EdgeInsets.all(15),
@@ -70,9 +71,25 @@ class _ExpenseInputState extends State<ExpenseInput> {
                         },
                         icon: const Icon(Icons.calendar_month))
                   ],
-                )
+                ),
               ],
             ),
+            SizedBox(height: 15),
+            DropdownButton(
+                value: _selectedCategory,
+                items: Category.values
+                    .map((category) => DropdownMenuItem(
+                        value: category,
+                        child: Text(category.name.toString().toUpperCase())))
+                    .toList(),
+                onChanged: (value) {
+                  setState(() {
+                    if (value == null) {
+                      return;
+                    }
+                    _selectedCategory = value;
+                  });
+                }),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
