@@ -99,17 +99,38 @@ class _ExpenseInputState extends State<ExpenseInput> {
                     ),
                     child: ElevatedButton(
                         onPressed: () {
-                          print(_titleController.text);
-                          print(_amountController.text);
+                          final _amountValidation =
+                              double.tryParse(_amountController.toString());
+
+                          if (_amountValidation == null ||
+                              _amountValidation <= 0 ||
+                              _titleController.text.trim().isEmpty ||
+                              selectedDate == null) {
+                            showDialog(
+                                context: context,
+                                builder: (ctx) => AlertDialog(
+                                      title: const Text('Invalid Input'),
+                                      content: const Text(
+                                          "Please enter valid value for Title, Amount, Date"),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text("Ok"))
+                                      ],
+                                    ));
+                            return;
+                          } else {}
                         },
-                        child: Text("Save Expense"))),
+                        child: const Text("Save Expense"))),
                 Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 5,
                     ),
                     child: TextButton(
                         onPressed: () {
-                          print(_titleController.text);
+                          Navigator.pop(context);
                         },
                         child: Text("Cancel")))
               ],
