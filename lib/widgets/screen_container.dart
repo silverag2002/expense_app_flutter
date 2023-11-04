@@ -8,13 +8,24 @@ class ScreenContainer extends StatelessWidget {
   final List<Expense> expensesData;
   @override
   Widget build(context) {
-    return Container(
-        child: ListView.builder(
-            itemCount: expensesData.length,
-            itemBuilder: (ctx, index) => Dismissible(
-                onDismissed: (direction) =>
-                    {removeExpense(expensesData[index])},
-                key: ValueKey(expensesData[index]),
-                child: ExpenseItem(expensesData[index]))));
+    if (expensesData.isEmpty) {
+      return const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Text(
+                "No expense",
+              )
+            ]))
+          ]);
+    }
+    return ListView.builder(
+        itemCount: expensesData.length,
+        itemBuilder: (ctx, index) => Dismissible(
+            onDismissed: (direction) => {removeExpense(expensesData[index])},
+            key: ValueKey(expensesData[index]),
+            child: ExpenseItem(expensesData[index])));
   }
 }

@@ -42,9 +42,11 @@ class _ExpensesState extends State<Expenses> {
         ]),
         body: Container(
             margin: const EdgeInsets.all(10),
-            child: Column(children: [
-              const Text("The chart"),
-              Expanded(child: ScreenContainer(expenseData, removeExpense))
-            ]))));
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text("The chart"),
+                  Expanded(child: ScreenContainer(expenseData, removeExpense))
+                ]))));
   }
 }
