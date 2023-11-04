@@ -4,6 +4,7 @@ import 'package:expense_app/models/expense.dart';
 class ExpenseInput extends StatefulWidget {
   ExpenseInput(this.addExpense, {super.key});
   final Function addExpense;
+
   State<ExpenseInput> createState() {
     return _ExpenseInputState();
   }
@@ -103,11 +104,6 @@ class _ExpenseInputState extends State<ExpenseInput> {
                         onPressed: () {
                           final _amountValidation =
                               double.tryParse(_amountController.text);
-                          print("AMOUNT 1 ${_amountValidation == null}");
-                          print("AMOUNT  2${_amountValidation! <= 0}");
-                          print(
-                              "AMOUNT 3 ${_titleController.text.trim().isEmpty}");
-                          print("AMOUNT 4 ${selectedDate == null}");
 
                           if (_amountValidation == null ||
                               _amountValidation <= 0 ||

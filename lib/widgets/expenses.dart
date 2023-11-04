@@ -20,9 +20,18 @@ class _ExpensesState extends State<Expenses> {
     });
   }
 
+  void removeExpense(Expense expense) {
+    setState(() {
+      expenseData.remove(expense);
+    });
+  }
+
   void _openBottomModel() {
     showModalBottomSheet(
-        context: context, builder: (ctx) => ExpenseInput(addExpense));
+        context: context,
+        builder: (ctx) => ExpenseInput(
+              addExpense,
+            ));
   }
 
   @override
@@ -35,7 +44,7 @@ class _ExpensesState extends State<Expenses> {
             margin: const EdgeInsets.all(10),
             child: Column(children: [
               const Text("The chart"),
-              Expanded(child: ScreenContainer(expenseData))
+              Expanded(child: ScreenContainer(expenseData, removeExpense))
             ]))));
   }
 }
